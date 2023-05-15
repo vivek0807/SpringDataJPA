@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -19,6 +20,9 @@ import java.util.Objects;
 @Setter
 @Getter
 @Table(name = "Customer",schema = "Saleslt")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+
 
 public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

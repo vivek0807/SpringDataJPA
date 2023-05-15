@@ -10,9 +10,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @RestControllerAdvice
 public class GlobalExceptions extends ResponseEntityExceptionHandler {
-    @ExceptionHandler(value = CustomerNotFoundException.class)
+    @ExceptionHandler(CustomerNotFoundException.class)
     public ResponseEntity<Object> customerNotFoundHandler(CustomerNotFoundException ex){
-        System.out.println("Coming till here");
         ApiResponse apiResponse=new ApiResponse(ex.getMessage(),false);
         return new ResponseEntity<>(apiResponse.toString(),HttpStatus.NOT_FOUND);
     }
